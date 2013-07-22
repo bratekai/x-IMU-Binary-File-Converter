@@ -19,7 +19,7 @@ namespace x_IMU_Binary_File_Converter
         /// <summary>
         /// ASCII files object for converted binary files.
         /// </summary>
-        private xIMU_API.ASCIIdataFiles convertedBinaryFiles;
+        private xIMU_API.CSVfileWriter convertedBinaryFiles;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:ConvertBinaryFile"/> class.
@@ -40,7 +40,7 @@ namespace x_IMU_Binary_File_Converter
         /// </returns>
         public xIMU_API.PacketCount Convert()
         {
-            convertedBinaryFiles = new xIMU_API.ASCIIdataFiles(Path.GetDirectoryName(FilePath) + "\\" + Path.GetFileNameWithoutExtension(FilePath));
+            convertedBinaryFiles = new xIMU_API.CSVfileWriter(Path.GetDirectoryName(FilePath) + "\\" + Path.GetFileNameWithoutExtension(FilePath));
             xIMU_API.xIMUfile xIMUfile = new xIMU_API.xIMUfile(FilePath);
             xIMUfile.xIMUdataRead += new xIMU_API.xIMUfile.onxIMUdataRead(xIMUfile_xIMUdataRead);
             xIMUfile.Read();
