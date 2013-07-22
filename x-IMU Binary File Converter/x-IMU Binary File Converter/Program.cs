@@ -97,9 +97,13 @@ namespace x_IMU_Binary_File_Converter
                 for (int i = 0; i < binaryFilePaths.Length; i++)
                 {
                     Console.Write("Converting " + Path.GetFileName(binaryFilePaths[i]) + "...");
-                    ConvertBinaryFile convertBinary = new ConvertBinaryFile(binaryFilePaths[i]);
-                    x_IMU_API.PacketCount packetCount = convertBinary.Convert();
-                    Console.Write("Done.  Packets read: " + Convert.ToString(packetCount.TotalPacketsRead) + " " + "Packet errors: " + Convert.ToString(packetCount.PacketsReadErrors) + "\n");
+                    x_IMU_API.CSVfileWriter CSVfileWriter = new x_IMU_API.CSVfileWriter(Path.GetDirectoryName(binaryFilePaths[i]) + "\\" + Path.GetFileNameWithoutExtension(binaryFilePaths[i]));
+                    x_IMU_API.xIMUfile xIMUfile = new x_IMU_API.xIMUfile(binaryFilePaths[i]);
+                    xIMUfile.xIMUdataRead += new x_IMU_API.xIMUfile.onxIMUdataRead(delegate(object sender, x_IMU_API.xIMUdata e) { CSVfileWriter.WriteData(e); });
+                    xIMUfile.Read();
+                    xIMUfile.Close();
+                    CSVfileWriter.CloseFiles();
+                    Console.Write("Done. Packets read: " + Convert.ToString(xIMUfile.PacketsReadCounter.TotalPackets) + ", Read errors: " + Convert.ToString(xIMUfile.ReadErrors) + "\n");
                 }
 
                 #endregion
