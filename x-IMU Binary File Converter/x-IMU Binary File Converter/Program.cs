@@ -22,7 +22,7 @@ namespace x_IMU_Binary_File_Converter
         /// </returns>
         static int Main(string[] args)
         {
-            Console.WriteLine(Assembly.GetExecutingAssembly().GetName().Name + " " + Assembly.GetExecutingAssembly().GetName().Version);
+            Console.WriteLine(Assembly.GetExecutingAssembly().GetName().Name + " " + Assembly.GetExecutingAssembly().GetName().Version.Major.ToString() + "." + Assembly.GetExecutingAssembly().GetName().Version.Minor.ToString());
             try
             {
                 #region Variables
@@ -98,7 +98,7 @@ namespace x_IMU_Binary_File_Converter
                 {
                     Console.Write("Converting " + Path.GetFileName(binaryFilePaths[i]) + "...");
                     ConvertBinaryFile convertBinary = new ConvertBinaryFile(binaryFilePaths[i]);
-                    xIMU_API.PacketCount packetCount = convertBinary.Convert();
+                    x_IMU_API.PacketCount packetCount = convertBinary.Convert();
                     Console.Write("Done.  Packets read: " + Convert.ToString(packetCount.TotalPacketsRead) + " " + "Packet errors: " + Convert.ToString(packetCount.PacketsReadErrors) + "\n");
                 }
 
@@ -113,11 +113,11 @@ namespace x_IMU_Binary_File_Converter
             catch (Exception ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
-                Console.WriteLine("Press any key to exit.");
+                Console.WriteLine("Press any key to exit...");
                 Console.ReadKey();
                 return 1;
             }
-            Console.WriteLine("Press any key to exit.");
+            Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
             return 0;
         }

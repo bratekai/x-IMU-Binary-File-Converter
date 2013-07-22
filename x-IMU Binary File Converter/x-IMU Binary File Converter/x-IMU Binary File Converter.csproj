@@ -38,12 +38,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="xIMU_API, Version=8.0.4149.21951, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>xIMU_API\xIMU_API.dll</HintPath>
+    <Reference Include="x-IMU API">
+      <HintPath>x-IMU API\x-IMU API.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -19,7 +19,7 @@ namespace x_IMU_Binary_File_Converter
         /// <summary>
         /// ASCII files object for converted binary files.
         /// </summary>
-        private xIMU_API.CSVfileWriter convertedBinaryFiles;
+        private x_IMU_API.CSVfileWriter convertedBinaryFiles;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="T:ConvertBinaryFile"/> class.
@@ -38,11 +38,11 @@ namespace x_IMU_Binary_File_Converter
         /// <returns>
         /// PacketCounter result.
         /// </returns>
-        public xIMU_API.PacketCount Convert()
+        public x_IMU_API.PacketCount Convert()
         {
-            convertedBinaryFiles = new xIMU_API.CSVfileWriter(Path.GetDirectoryName(FilePath) + "\\" + Path.GetFileNameWithoutExtension(FilePath));
-            xIMU_API.xIMUfile xIMUfile = new xIMU_API.xIMUfile(FilePath);
-            xIMUfile.xIMUdataRead += new xIMU_API.xIMUfile.onxIMUdataRead(xIMUfile_xIMUdataRead);
+            convertedBinaryFiles = new x_IMU_API.CSVfileWriter(Path.GetDirectoryName(FilePath) + "\\" + Path.GetFileNameWithoutExtension(FilePath));
+            x_IMU_API.xIMUfile xIMUfile = new x_IMU_API.xIMUfile(FilePath);
+            xIMUfile.xIMUdataRead += new x_IMU_API.xIMUfile.onxIMUdataRead(xIMUfile_xIMUdataRead);
             xIMUfile.Read();
             xIMUfile.Close();
             convertedBinaryFiles.CloseFiles();
@@ -52,7 +52,7 @@ namespace x_IMU_Binary_File_Converter
         /// <summary>
         /// x-IMU data read event to write data to ASCII files.
         /// </summary>
-        void xIMUfile_xIMUdataRead(object sender, xIMU_API.xIMUdata e)
+        void xIMUfile_xIMUdataRead(object sender, x_IMU_API.xIMUdata e)
         {
             try
             {
