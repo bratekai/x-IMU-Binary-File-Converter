@@ -27,7 +27,7 @@ namespace x_IMU_Binary_File_Converter
             {
                 #region Variables
 
-                string src = null;
+                string src = Directory.GetCurrentDirectory();
                 bool sub = false;
                 bool ext = false;
                 string[] binaryFilePaths = null;
@@ -51,19 +51,6 @@ namespace x_IMU_Binary_File_Converter
                             throw new Exception("Invalid argument.");
                     }
                 }
-
-                #endregion
-
-                #region Default arguments
-
-                if (src == null)
-                {
-                    src = Directory.GetCurrentDirectory();
-                }
-
-                #endregion
-
-                #region Print arguments
 
                 Console.WriteLine("-src: " + src);
                 Console.WriteLine("-sub: " + Convert.ToString(sub));

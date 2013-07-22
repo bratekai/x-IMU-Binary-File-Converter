@@ -22,7 +22,7 @@ namespace x_IMU_Binary_File_Converter
         private xIMU_API.ASCIIdataFiles convertedBinaryFiles;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:ConvertBinary"/> class.
+        /// Initializes a new instance of the <see cref="T:ConvertBinaryFile"/> class.
         /// </summary>
         /// <param name="filePath">
         /// Path of binary file.
